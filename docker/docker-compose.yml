@@ -1,0 +1,20 @@
+services:
+  ros2:
+    build:
+      context: ..
+      dockerfile: docker/ros2.dev.Dockerfile
+      args:
+        ROS_DISTRO: ${ROS_DISTRO}
+        DEV_UID: ${DEV_UID}
+        DEV_GID: ${DEV_GID}
+    image: tb3-dev:${ROS_DISTRO}
+    container_name: tb3-dev
+    env_file:
+      - ./.env
+    environment:
+      - ROS_DOMAIN_ID=${ROS_DOMAIN_ID}
+    volumes:
+      - ../ros_ws:/work/ros_ws
+    working_dir: /work/ros_ws
+    tty: true
+    stdin_open: true
