@@ -1,0 +1,48 @@
+services:
+  ros2:
+    build:
+      context: ./ros_ws
+      dockerfile: ros2.dev.Dockerfile
+      args:
+        ROS_DISTRO: ${ROS_DISTRO}
+        DEV_UID: ${DEV_UID}
+        DEV_GID: ${DEV_GID}
+    image: tb3-dev:${ROS_DISTRO}
+    env_file:
+      - ./.env
+    environment:
+      - ROS_DOMAIN_ID=${ROS_DOMAIN_ID}
+      - RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+    volumes:
+      - ./ros_ws:/work/ros_ws
+    working_dir: /work/ros_ws
+    command: bash -lc "\
+      source /opt/ros/${ROS_DISTRO}/setup.bash && \
+      source install/setup.bash 2>/dev/null || true && \
+      (ros2 launch your_pkg your_launch_file.launch.py &) && \
+      python3 bridge/bridge.py \"
+    ports:
+      - "9090:9090"
+    tty: true
+    stdin_open: true
+    networks: [appnet]
+
+  backend:
+    build: ./backend
+    environment:
+      - BRIDGE_URL=http://ros2:9090
+    depends_on: [ros2]
+    ports:
+      - "5000:5000"
+    networks: [appnet]
+
+  frontend:
+    build: ./frontend
+    depends_on: [backend]
+    ports:
+      - "5173:80"
+    networks: [appnet]
+
+networks:
+  appnet:
+    driver: bridge

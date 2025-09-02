@@ -15,3 +15,7 @@ WORKDIR /work
 
 USER dev
 
+RUN pip3 install --no-cache-dir fastapi uvicorn rclpy
+# or if you keep a requirements.txt:
+# COPY bridge/requirements.txt /tmp/requirements.txt
+# RUN pip3 install -r /tmp/requirements.txt
