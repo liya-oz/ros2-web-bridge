@@ -10,7 +10,8 @@ RUN apt-get update && apt-get install -y \
     vim less git \
  && rm -rf /var/lib/apt/lists/*
 
-RUN pip3 install --no-cache-dir fastapi uvicorn
+RUN pip3 install --no-cache-dir flask
+
 ENV ROS_DISTRO=${ROS_DISTRO}
 ENV ROS_DOMAIN_ID=88
 

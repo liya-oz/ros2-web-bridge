@@ -16,11 +16,13 @@ services:
     volumes:
       - ./ros_ws:/work/ros_ws
     working_dir: /work/ros_ws
-    command: bash -lc "\
-      source /opt/ros/${ROS_DISTRO}/setup.bash && \
-      source install/setup.bash 2>/dev/null || true && \
-      (ros2 launch your_pkg your_launch_file.launch.py &) && \
-      python3 bridge/bridge.py \"
+    command:
+      - bash
+      - -lc
+      - |
+        source /opt/ros/${ROS_DISTRO}/setup.bash
+        source install/setup.bash 2>/dev/null || true
+        ros2 launch /work/ros_ws/src/py_basics/py_basics/mvp.launch.py
     ports:
       - "9090:9090"
     tty: true
