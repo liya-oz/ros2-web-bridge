@@ -11,7 +11,7 @@
 
 **ros2-web-bridge** is a boilerplate MVP that lets a browser-based UI communicate with ROS 2 nodes through an internal HTTP bridge. It provides a ready-made, containerized starting point for ROS 2 developers building web dashboards that read data from ROS 2 topics.
 
-The stack uses Docker Compose to run three lightweight services:
+The stack uses **Docker Compose** to run three lightweight services:
 
 * **ros2**: Runs a ROS 2 *talker* node and an internal HTTP bridge (`bridge_server.py`) that exposes the latest `/chatter` message at `GET /latest` on port **9090** (within the Docker network and exposed to host).
 * **backend** (Flask): Polls `http://ros2:9090/latest` every second and re-exposes it as `GET /api/chatter` on port **5000** (host-visible).
@@ -112,4 +112,5 @@ ros2-web-bridge/
 ## License
 
 MIT — see `LICENSE`.
+
 
