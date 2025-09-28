@@ -15,7 +15,7 @@ The stack uses **Docker Compose** to run three lightweight services:
 
 * **ros2**: Runs a ROS 2 *talker* node and an internal HTTP bridge (`bridge_server.py`) that exposes the latest `/chatter` message at `GET /latest` on port **9090** (within the Docker network and exposed to host).
 * **backend** (Flask): Polls `http://ros2:9090/latest` every second and re-exposes it as `GET /api/chatter` on port **5000** (host-visible).
-* **frontend** (Nginx serving static UI or React build): Polls the backend and displays the latest message at **[http://localhost:5173](http://localhost:5173)**.
+* **frontend** (Nginx serving static UI or React build): Runs on port **5173**, polls the backend (`/api/chatter`), and displays the latest message.  
 
 This setup allows quick prototyping and development of browser-based interfaces for ROS 2 systems, with all components running in Docker containers.
 
@@ -112,5 +112,6 @@ ros2-web-bridge/
 ## License
 
 MIT — see `LICENSE`.
+
 
 
