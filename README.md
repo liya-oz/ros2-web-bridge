@@ -7,7 +7,7 @@
   <img alt="Node.js" src="https://img.shields.io/badge/Node.js-22-339933?logo=nodedotjs">
 </div>
 
-# ros2-web-bridge
+#  ros2-web-bridge
 
 **ros2-web-bridge** is a boilerplate MVP that lets a browser-based UI communicate with ROS 2 nodes through an internal HTTP bridge. It provides a ready-made, containerized starting point for ROS 2 developers building web dashboards that read data from ROS 2 topics.
 
@@ -112,6 +112,7 @@ ros2-web-bridge/
 ## License
 
 MIT — see `LICENSE`.
+
 
 
 
