@@ -1,6 +1,6 @@
 import rclpy
 from rclpy.node import Node
-from std_msgs.msg import String  # add other message types as needed
+from std_msgs.msg import String
 from flask import Flask, jsonify
 from threading import Thread, Lock
 from rosidl_runtime_py import message_to_ordereddict
