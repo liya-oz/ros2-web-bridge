@@ -62,7 +62,7 @@ http://localhost:5000/api/chatter
 * **Docker**: [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/)
 * **Docker Compose**: [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/)
 * **Git**
-* **Node.js 22+** *(optional — only if building React UI locally before containerizing)*: [https://nodejs.org/](https://nodejs.org/)
+* **Node.js 22+** *(only if building React UI locally before containerizing)*: [https://nodejs.org/](https://nodejs.org/)
 
 ---
 
@@ -112,6 +112,7 @@ ros2-web-bridge/
 ## License
 
 MIT — see `LICENSE`.
+
 
 
 
